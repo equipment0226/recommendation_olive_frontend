@@ -1,7 +1,11 @@
 import type { Analysis, RecOption, User, Validation } from "./types";
 
+// 개발: Vite proxy → localhost:5000
+// 프로덕션: VITE_API_BASE_URL 환경변수 (예: https://xxx.up.railway.app)
+const BASE = (import.meta.env.VITE_API_BASE_URL as string | undefined) ?? "";
+
 async function getJson<T>(url: string): Promise<T> {
-  const res = await fetch(url);
+  const res = await fetch(BASE + url);
   if (!res.ok) throw new Error(`${res.status} ${url}`);
   return res.json() as Promise<T>;
 }

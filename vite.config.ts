@@ -1,7 +1,8 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
-// Flask API(5000)로 /api 프록시. 프론트는 5173.
+// 개발: /api → localhost:5000 프록시
+// 프로덕션: VITE_API_BASE_URL 환경변수로 백엔드 도메인 지정
 export default defineConfig({
   plugins: [react()],
   server: {
@@ -12,5 +13,8 @@ export default defineConfig({
         changeOrigin: true,
       },
     },
+  },
+  build: {
+    outDir: "dist",
   },
 });
