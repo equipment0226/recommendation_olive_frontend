@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
-import { api, categoryEmoji, won } from "../api";
+import { api, won } from "../api";
+import { ProductImage } from "../images";
 import type { Analysis, BucketType, CartItem, RecProduct } from "../types";
 
 interface Props {
@@ -158,7 +159,13 @@ export function RealService({ userId, analysis }: Props) {
                       />
                       <span className="svc-checkbox" />
                     </label>
-                    <div className="svc-thumb">{categoryEmoji(it.category_name)}</div>
+                    <div className="svc-thumb">
+                      <ProductImage
+                        categoryId={it.category_id}
+                        productId={it.product_id}
+                        categoryName={it.category_name}
+                      />
+                    </div>
                     <div className="svc-clean-main">
                       <div className="svc-clean-name">{it.product_name}</div>
                       <div className="svc-clean-reason">
@@ -255,7 +262,13 @@ export function RealService({ userId, analysis }: Props) {
                   ) : (
                     cfItems.map((p) => (
                       <div className="svc-rec-card" key={p.product_id}>
-                        <div className="svc-rec-thumb">🛍️</div>
+                        <div className="svc-rec-thumb">
+                          <ProductImage
+                            categoryId={p.category_id}
+                            productId={p.product_id}
+                            categoryName={p.name}
+                          />
+                        </div>
                         <div className="svc-rec-brand">{p.brand}</div>
                         <div className="svc-rec-name">{p.name}</div>
                         <div className="svc-rec-price">{p.price}</div>
@@ -282,7 +295,13 @@ export function RealService({ userId, analysis }: Props) {
           <div className="svc-items">
             {cartItems.map((it) => (
               <div className="svc-item" key={it.cart_id}>
-                <div className="svc-thumb">{categoryEmoji(it.category_name)}</div>
+                <div className="svc-thumb">
+                  <ProductImage
+                    categoryId={it.category_id}
+                    productId={it.product_id}
+                    categoryName={it.category_name}
+                  />
+                </div>
                 <div className="svc-item-main">
                   <div className="svc-item-brand">{it.brand}</div>
                   <div className="svc-item-name">{it.product_name}</div>

@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { categoryEmoji, recIcon } from "../api";
+import { recIcon } from "../api";
+import { ProductImage } from "../images";
 import type { RecOption } from "../types";
 
 interface Props {
@@ -103,7 +104,13 @@ export function Step3({ options, checkedCount, remaining, loading, onDone }: Pro
               <div className="rec-grid">
                 {active.items.map((p) => (
                   <div className="rec-product" key={p.product_id}>
-                    <div className="rec-product-img">{categoryEmoji()}</div>
+                    <div className="rec-product-img">
+                      <ProductImage
+                        categoryId={p.category_id}
+                        productId={p.product_id}
+                        categoryName={p.name}
+                      />
+                    </div>
                     <div className="rec-product-body">
                       <div className="rec-product-brand">{p.brand}</div>
                       <div className="rec-product-name">{p.name}</div>

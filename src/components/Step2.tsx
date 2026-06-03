@@ -1,4 +1,5 @@
-import { categoryEmoji, won } from "../api";
+import { won } from "../api";
+import { ProductImage } from "../images";
 import type { Analysis, CartItem } from "../types";
 
 interface Props {
@@ -56,7 +57,13 @@ export function Step2({ analysis: a, checked, onToggle, onPrev, onNext }: Props)
               <div key={item.cart_id}>
                 <div className="product-row" onClick={() => onToggle(item.cart_id)}>
                   <div className={"check-circle" + (checked[item.cart_id] ? " checked" : "")} />
-                  <div className="product-thumb">{categoryEmoji(item.category_name)}</div>
+                  <div className="product-thumb">
+                    <ProductImage
+                      categoryId={item.category_id}
+                      productId={item.product_id}
+                      categoryName={item.category_name}
+                    />
+                  </div>
                   <div className="product-info">
                     <div className="product-name">{item.product_name}</div>
                     <div className="product-meta">
@@ -86,7 +93,13 @@ export function Step2({ analysis: a, checked, onToggle, onPrev, onNext }: Props)
           </div>
           {a.keep_items.map((item) => (
             <div className="keep-row" key={item.cart_id}>
-              <div className="keep-thumb">{categoryEmoji(item.category_name)}</div>
+              <div className="keep-thumb">
+                <ProductImage
+                  categoryId={item.category_id}
+                  productId={item.product_id}
+                  categoryName={item.category_name}
+                />
+              </div>
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ fontSize: 13, fontWeight: 500 }}>{item.product_name}</div>
                 <div style={{ display: "flex", gap: 7, alignItems: "center", marginTop: 4 }}>

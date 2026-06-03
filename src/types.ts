@@ -48,6 +48,7 @@ export interface RecProduct {
   name: string;
   brand: string;
   price: string;
+  category_id?: string;
   tag: string;
 }
 
