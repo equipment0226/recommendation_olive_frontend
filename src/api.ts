@@ -1,4 +1,4 @@
-import type { Analysis, RecOption, User, Validation } from "./types";
+import type { Analysis, RecOption, User, Distribution } from "./types";
 
 // 개발: Vite proxy → localhost:5000
 // 프로덕션: VITE_API_BASE_URL 환경변수 (예: https://xxx.up.railway.app)
@@ -14,7 +14,7 @@ export const api = {
   users: () => getJson<User[]>("/api/users"),
   analysis: (userId: string) => getJson<Analysis>(`/api/analysis/${userId}`),
   recommend: (userId: string) => getJson<RecOption[]>(`/api/recommend/${userId}`),
-  validate: () => getJson<Validation>("/api/validate"),
+  distribution: () => getJson<Distribution>("/api/distribution"),
 };
 
 // 카테고리/성분 기반 이모지 매핑 (썸네일 대용 — 화면설계서의 시각 톤 유지)

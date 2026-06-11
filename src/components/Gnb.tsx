@@ -47,7 +47,7 @@ export function Gnb({ users, selected, onSelect, view, onView, cartCount }: Prop
               onView("validate");
             }}
           >
-            🔍 분류 검증
+            � 버킷 분포
           </a>
         </div>
         <div className="user-selector-wrap">

@@ -27,8 +27,6 @@ export interface CartItem {
   type: BucketType;
   default_checked: boolean;
   reason: string;
-  expected_bucket: string;
-  match: boolean;
 }
 
 export interface Analysis {
@@ -62,25 +60,17 @@ export interface RecOption {
   items: RecProduct[];
 }
 
-export interface ValidateBucketStat {
-  total: number;
-  correct: number;
-  rate: number;
+export interface BucketDist {
+  count: number;
+  group: "cleansing" | "keep";
+  type: BucketType;
+  ratio: number;
 }
 
-export interface Mismatch {
-  user_id: string;
-  product_id: string;
-  product_name: string;
-  expected: string;
-  predicted: string;
-}
-
-export interface Validation {
+export interface Distribution {
   total: number;
-  correct: number;
-  match_rate: number;
-  by_bucket: Record<string, ValidateBucketStat>;
-  confusion: Record<string, Record<string, number>>;
-  mismatches: Mismatch[];
+  users: number;
+  cleansing_total: number;
+  keep_total: number;
+  by_bucket: Record<string, BucketDist>;
 }
